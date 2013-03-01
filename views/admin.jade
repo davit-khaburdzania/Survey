@@ -1,0 +1,51 @@
+!!!
+head
+  link(rel="stylesheet", type="text/css", href="/css/admin.css")
+  script(src="/js/jquery-1.9.1.min.js")
+  script(src="/js/admin.js")
+
+body
+  if typeof user !== "undefined" && user
+    #admin_page
+      a(href="/survey/edit/all") surveys
+      br
+      a#add_survey_link(href="#") add survey
+      br
+      br
+
+      #add_survey.hide
+        #add_survey_errors.error
+        form#add_survey_form
+          label(for="name") Title
+          input#name(type="text", name="name")
+          br
+
+          label(for="question") Question
+          input#question(type="text", name="question")
+          br
+
+          label(for="name") Type
+          select#type
+            option(value="yes_or_no") Yes or No
+            option(value="list_radio") List with Radio Buttons
+          br
+
+          #list_radio.hide
+            a#add_list_radio(href="") add option
+            #list_radio_options
+
+          #yes_or_no.hide
+          br  
+
+          input(type="reset", value="clear")  
+          input(type="submit", value="submit")
+  else
+    form#login_form
+      #login_errors.hide
+      label(for="user") username: 
+      input(type="text", name="user")
+      br
+      label(for="password") password: 
+      input(type="password", name="password")
+      br
+      input(type="submit", value="LOGIN")

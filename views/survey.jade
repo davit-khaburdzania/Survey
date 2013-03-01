@@ -1,0 +1,17 @@
+!!!
+head
+  link(rel="stylesheet", type="text/css", href="/css/index.css")
+  script(src="/js/jquery-1.9.1.min.js")
+  script(src="/js/index.js")
+body
+  if survey.type === "list_radio" || survey.type === "yes_or_no"
+    h3 #{survey.name}/#{survey.date.toDateString()}  
+    #survey_errors
+    p question: #{survey.question}
+
+    form#survey_form(method="POST", action="/survey/#{survey._id}")
+      each opt, i in survey.options
+        input(type="radio", name="answer", value=i)
+        label(for="answer")   #{opt}
+        br
+      input(type="submit", value="SUBMIT")
