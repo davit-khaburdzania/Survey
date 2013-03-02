@@ -1,9 +1,12 @@
 $ ->
   $("#survey_form").submit (e) ->
     e.preventDefault()
-    answer = $(this).serializeArray()[0].value
+    answers = []
+    $(".survey").each (i, el) ->
+      answers.push $(el).find("input:checked").val() or null
     where  = $("#survey_form").attr("action")
-    $.post where, {answer}, (result) ->
+    
+    $.post where, {answers: answers}, (result) ->
       if result?.errors is null
         $("#survey_errors").html("survey submited successfully").attr("class", "success").fadeIn()
       else if result?.errors?

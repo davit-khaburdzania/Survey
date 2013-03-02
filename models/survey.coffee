@@ -16,9 +16,9 @@ class Survey
     db.surveys.find _id: +id, ips: ip, (err, survey) ->
       cb(err, (survey?.length is 1))
  
-  @add_answer: (id, answer, ip, cb) ->
+  @add_answer: (id, answers, ip, cb) ->
     update = 
-      $push: { ips: ip, answers: {ip, answer, date: new Date()} }
+      $push: { ips: ip, answers: {ip, answers, date: new Date()} }
     db.surveys.update _id: +id, update, (err, result) ->
       cb(err, result) 
 
@@ -30,7 +30,6 @@ class Survey
         cb(err, doc?[0]?["_id"])
 
   @insert: (obj, cb) ->
-    obj.answers = obj.ips = []
     db.surveys.insert obj, (err) ->
       cb(err)
 

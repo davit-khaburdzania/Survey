@@ -16,17 +16,23 @@ exports.survey_get = (req, res) ->
 exports.survey_post = (req, res) ->
   id = req.params.id
   ip = req.ip
-  answer = req.body?.answer
+  answers = req.body?.answers
 
-  if ip? and id? and answer?
-    survey.ip_exists id, ip, (err, exists) ->
-      if exists
-        res.json errors: ["you have already submited"]
-      else
-        survey.add_answer id, answer, ip, (err) ->
-          res.json errors: if err then ["something bad happend"] else null
+  if ip? and id? and answers? and answers.indexOf('') is -1
+    survey.one id, (err, s) ->
+      ## check if survey exists
+      if not s? or s.length <= 0  or s?[0]?.surveys?.length isnt answers.length
+        res.json errors: ["please fill surveys"]
+        return
+      ## check ip already exists
+      survey.ip_exists id, ip, (err, exists) ->
+        if exists
+          res.json errors: ["you have already submited"]
+        else
+          survey.add_answer id, answers, ip, (err) ->
+            res.json errors: if err then ["something bad happend"] else null
   else
-    res.json errors: ["something missing"], result: false
+    res.json errors: ["please fill surveys"], result: false
 
 ##admin routes
 exports.admin_get = (req, res) -> res.render "admin"
@@ -52,33 +58,36 @@ exports.logout = (req, res) ->
 
   ## create new survey
 exports.create_survey = (req, res) ->
-  name      = req.body.name
-  question  = req.body.question
-  type      = req.body.type
-  errors    = []
+  survey_name = req.body.name
+  surveys     = req.body.surveys
+  errors      = []
 
-  # if survey is list radio
-  if type is "list_radio"
-    option_count = +req.body.option_count
-    options = []
-    if option_count > 0
-      for i in [1..option_count]
-        if not req.body["option#{i}"] or req.body["option#{i}"].length is 0
-          errors.push "option #{i} is not filled"
-        options.push req.body["option#{i}"]
-  if type is "yes_or_no"
-    options = ["Yes", "No"]
+  if not surveys? or surveys?.length < 1 or not survey_name
+    errors = ["please fill all values"]
+    res.json errors: errors, okay: false
+  else
+    for s in surveys
+      # if survey is list radio
+      if s.type is "list_radio"
+        s.option_count = +s.option_count
+        s.options = []
 
-  #check for errors
-  if not name or name.length < 1
-    errors.push "please fill name field"
-  if not question or question.length < 1
-    errors.push "please fill question field"
-  if not type or type.length < 1
-    errors.push "please select one of the types"
-  if type is "list_radio" and (not option_count or option_count < 2)
-    errors.push "number of options must be more than 2"
-  
+        if s.option_count > 0
+          for i in [1..s.option_count]
+            if not s["option#{i}"]? or s["option#{i}"]?.length is 0
+              errors = ["please fill all values"]
+            s.options.push s["option#{i}"]
+      #if survey is yes or no
+      if s.type is "yes_or_no"
+        s.options = ["Yes", "No"]
+      #check for errors
+      if not s.question or s.question.length < 1
+        errors = ["please fill all values"]
+      if not s.type or s.type.length < 1
+        errors = ["please fill all values"]
+      if s.type is "list_radio" and (not s.option_count or s.option_count < 2)
+        errors = ["please fill all values"]
+      
   if errors.length > 0
     res.json errors:errors, okay: false
   else
@@ -87,13 +96,18 @@ exports.create_survey = (req, res) ->
         res.json errors: ["can't get last id"], okay: false
       else
         ## insert survey into database
-        obj =
-          name:     name
-          question: question
-          type:     type
-          options:  options
-          date:     new Date()
-          _id:      id+1
+        obj = {}
+        obj.name = survey_name
+        obj.surveys = []
+        obj.date = new Date()
+        obj._id  = id+1
+        obj.ips  = obj.answers = []
+
+        for o in surveys
+          obj.surveys.push
+            question: o.question
+            type:     o.type
+            options:  o.options
 
         survey.insert obj, (err) ->
           if err 

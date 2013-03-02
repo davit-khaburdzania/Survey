@@ -54,7 +54,8 @@ app.get  "/admin",         routes.admin_get
 app.post "/admin",         routes.admin_post
 app.get  "/logout",        routes.logout
 
-app.post "/create/survey", if_not_logined, routes.create_survey
+app.post "/create/survey", routes.create_survey
+# app.post "/create/survey", if_not_logined, routes.create_survey
 
 app.listen "3000", ->
   console.log("server listening at port 3000...")

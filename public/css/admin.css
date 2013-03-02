@@ -2,3 +2,4 @@ body{background:#FFF;}
 .hide{display:none;}
 .error{color:red;display:none;}
 .success{color:green;display:none;}
+.survey{border-bottom:1px solid #CCC;padding-bottom:10px;padding-top:10px;}

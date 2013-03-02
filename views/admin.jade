@@ -6,36 +6,27 @@ head
 
 body
   if typeof user !== "undefined" && user
+    include includes/add_survey_template
+
     #admin_page
       a(href="/survey/edit/all") surveys
       br
-      a#add_survey_link(href="#") add survey
+      a#add_survey_link(href="#") create Survey
       br
       br
 
       #add_survey.hide
         #add_survey_errors.error
         form#add_survey_form
+          button#add_more("#") ADD Survey
+          br
+          br
           label(for="name") Title
-          input#name(type="text", name="name")
+          input(type="text", name="name")
+          br
           br
 
-          label(for="question") Question
-          input#question(type="text", name="question")
-          br
-
-          label(for="name") Type
-          select#type
-            option(value="yes_or_no") Yes or No
-            option(value="list_radio") List with Radio Buttons
-          br
-
-          #list_radio.hide
-            a#add_list_radio(href="") add option
-            #list_radio_options
-
-          #yes_or_no.hide
-          br  
+          #surveys
 
           input(type="reset", value="clear")  
           input(type="submit", value="submit")
