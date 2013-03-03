@@ -33,6 +33,10 @@ class Survey
     db.surveys.insert obj, (err) ->
       cb(err)
 
+  @delete: (id, cb) ->
+    db.surveys.remove {_id: id}, (err) ->
+      cb(err?)
+
   @user: (username, cb) ->
     db.users.find user: username, (err, user) ->
       cb(err, user)

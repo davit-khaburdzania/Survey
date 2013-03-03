@@ -5,10 +5,13 @@ head
   script(src="/js/index.js")
 
 body
-  h2 surveys
-  each s, i in surveys
-    span #{i+1}. 
-    span 
-      a(href="/survey/#{s._id}") #{s.name}
-    br
-  
+  include includes/header
+
+  #surveys
+    each s, i in surveys
+      .survey_list
+        span.number #{i+1}. 
+        a.name(href="/survey/#{s._id}") #{s.name}
+        //- if( typeof user !== "undefined" && user)
+          a.delete_survey(href="#", id="#{s._id}") X
+    

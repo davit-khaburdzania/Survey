@@ -56,7 +56,7 @@ exports.logout = (req, res) ->
     res.redirect "/"
 
 
-  ## create new survey
+## create new survey
 exports.create_survey = (req, res) ->
   survey_name = req.body.name
   surveys     = req.body.surveys
@@ -115,5 +115,10 @@ exports.create_survey = (req, res) ->
           else
             res.json errors: null, okay: true
 
+## delete survey
+exports.delete_survey = (req, res) ->
+  id = +req.body.id
+  survey.delete id, (err) ->
+    res.json okay: not err
 
 

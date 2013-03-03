@@ -4,16 +4,19 @@ head
   script(src="/js/jquery-1.9.1.min.js")
   script(src="/js/index.js")
 body
-  h3 #{survey.name}/#{survey.date.toDateString()}  
-  #survey_errors
-  form#survey_form(method="POST", action="/survey/#{survey._id}")
-    each s,i in survey.surveys
-      .survey
-        if s.type === "list_radio" || s.type === "yes_or_no"
-          p question: #{s.question}
-            br
-            each opt, j in s.options
-              input(type="radio", name="answer_#{i}", value=j)
-              label(for="answer_#{i}")   #{opt}
+  include includes/header
+
+  #in_survey    
+    h3.name #{survey.name}
+    #survey_errors
+    form#survey_form(method="POST", action="/survey/#{survey._id}")
+      each s,i in survey.surveys
+        .survey
+          if s.type === "list_radio" || s.type === "yes_or_no"
+            p question: #{s.question}
               br
-    input(type="submit", value="SUBMIT")
+              each opt, j in s.options
+                input(type="radio", name="answer_#{i}", value=j)
+                label(for="answer_#{i}")   #{opt}
+                br
+      input(type="submit", value="SUBMIT")

@@ -14,3 +14,11 @@ $ ->
       else
         $("#survey_errors").html("something bad happened").attr("class", "error").fadeIn()
 
+  $(".delete_survey").click (e) ->
+    e.preventDefault()
+    if confirm("are you sure about that?")
+      id = $(this).attr("id")
+      $.post "/delete/survey", {id}, (res) =>
+        if res.okay
+          $(this).parent().fadeOut ->
+            $(this).remove()

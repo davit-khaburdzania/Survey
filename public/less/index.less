@@ -1,6 +1,5 @@
-body {
-  background: #FFF;
-}
+@import "reset.less";
+@import "fonts.less";
 
 .error {
   color: red;
@@ -10,4 +9,84 @@ body {
 .success {
   color: green;
   display: none
+}
+
+body {
+  background: #f9f9f9;
+  font-family: OpenSansRegular, sans-serif;
+}
+
+a {
+  color: rgb(87, 134, 111);;
+  text-decoration: none;
+  opacity: 1;
+}
+
+a:hover {
+  opacity: .7;
+  transition: opacity .3s ease;
+}
+
+header {
+  width: 440px;
+  margin: 0 auto;
+  position: relative;
+
+  h1 {
+    display: inline;
+    font-family: BlackRoseRegular;
+    color: #666;
+    font-size: 75px;
+    position: relative;
+    top: -41px;
+    left: 10px;
+  }
+  img {
+    width: 91px;
+    height: 90px;
+  }
+}
+
+#surveys, #in_survey {
+  width: 440px;
+  margin: 0 auto;
+}
+
+.survey_list {
+  margin-left: 10px;
+  border-bottom: 1px solid rgb(238, 236, 236);
+  padding: 20px 0;
+  font-size: 1.3em;  
+  line-height: 2.1rem;
+
+  .name {
+    text-transform: capitalize;
+    margin-left: 3px;
+  }
+  .number {
+    color: #666;
+  }
+}
+
+#in_survey {
+  padding-left: 17px;
+
+  h3.name {
+    display: inline-block;
+    border-bottom: 1px solid rgb(238, 236, 236);
+    text-transform: capitalize;
+    font-size: 1.3em;
+    line-height: 2.1rem;
+    margin: 20px 0;
+    padding-bottom: 3px;
+    color: #57866f;
+  }
+}
+
+
+
+.delete_survey {
+  text-decoration: none;
+  margin-left: 5px;
+  color: red;
 }
