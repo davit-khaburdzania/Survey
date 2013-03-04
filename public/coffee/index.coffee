@@ -22,3 +22,13 @@ $ ->
         if res.okay
           $(this).parent().fadeOut ->
             $(this).remove()
+
+  $(".option").click (e) ->
+    e.preventDefault()
+    $(this).find("input:radio").prop("checked", true)
+
+  $("#view_result").click (e) ->
+    e.preventDefault()
+
+  $(".survey_list").hover (e) ->
+    $(this).toggleClass("survey_hovered")

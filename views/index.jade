@@ -11,7 +11,8 @@ body
     each s, i in surveys
       .survey_list
         span.number #{i+1}. 
-        a.name(href="/survey/#{s._id}") #{s.name}
+        a.name(href="/survey/#{s._id}") 
+          span #{s.name}
         //- if( typeof user !== "undefined" && user)
-          a.delete_survey(href="#", id="#{s._id}") X
+        button.delete_survey(id="#{s._id}") delete
     

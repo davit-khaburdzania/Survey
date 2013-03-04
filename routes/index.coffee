@@ -22,7 +22,7 @@ exports.survey_post = (req, res) ->
     survey.one id, (err, s) ->
       ## check if survey exists
       if not s? or s.length <= 0  or s?[0]?.surveys?.length isnt answers.length
-        res.json errors: ["please fill surveys"]
+        res.json errors: ["You must answer all of surveys."]
         return
       ## check ip already exists
       survey.ip_exists id, ip, (err, exists) ->
@@ -32,7 +32,7 @@ exports.survey_post = (req, res) ->
           survey.add_answer id, answers, ip, (err) ->
             res.json errors: if err then ["something bad happend"] else null
   else
-    res.json errors: ["please fill surveys"], result: false
+    res.json errors: ["You must answer all of surveys."], result: false
 
 ##admin routes
 exports.admin_get = (req, res) -> res.render "admin"
@@ -63,7 +63,7 @@ exports.create_survey = (req, res) ->
   errors      = []
 
   if not surveys? or surveys?.length < 1 or not survey_name
-    errors = ["please fill all values"]
+    errors = ["You must fill in all of the fields."]
     res.json errors: errors, okay: false
   else
     for s in surveys
@@ -75,18 +75,18 @@ exports.create_survey = (req, res) ->
         if s.option_count > 0
           for i in [1..s.option_count]
             if not s["option#{i}"]? or s["option#{i}"]?.length is 0
-              errors = ["please fill all values"]
+              errors = ["You must fill in all of the fields."]
             s.options.push s["option#{i}"]
       #if survey is yes or no
       if s.type is "yes_or_no"
         s.options = ["Yes", "No"]
       #check for errors
       if not s.question or s.question.length < 1
-        errors = ["please fill all values"]
+        errors = ["You must fill in all of the fields."]
       if not s.type or s.type.length < 1
-        errors = ["please fill all values"]
+        errors = ["You must fill in all of the fields."]
       if s.type is "list_radio" and (not s.option_count or s.option_count < 2)
-        errors = ["please fill all values"]
+        errors = ["You must fill in all of the fields."]
       
   if errors.length > 0
     res.json errors:errors, okay: false

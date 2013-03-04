@@ -1,21 +1,119 @@
 @import "reset.less";
+@import "fonts.less";
 
-body {
-  background: #FFF;
-}
-
+@red: rgb(224, 114, 114);
+@green: #6bb480;
 .hide {
   display: none
 }
 
 .error {
-  color: red;
-  .hide
+
+  width: 360px;
+  color: #333;
+  display: none;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: rgb(243, 215, 215);
 }
 
 .success {
-  color: green;
-  .hide
+  color: #333;
+  width: 360px;
+  display: none;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: rgb(215, 243, 224);
+}
+
+body {
+  background: #f9f9f9;
+  font-family: OpenSansRegular, sans-serif !important;
+  margin-bottom: 100px;
+}
+
+header {
+  width: 440px;
+  margin: 0 auto;
+  position: relative;
+
+  h1 {
+    display: inline;
+    font-family: BlackRoseRegular;
+    color: #666;
+    font-size: 75px;
+    position: absolute;
+    top: 0px;
+    left: 100px;
+  }
+  img {
+    width: 91px;
+    height: 90px;
+  }
+}
+
+#login{
+  width: 440px;
+  margin: 0 auto;
+
+  #login_form {
+    margin-left: 10px;
+    margin-top: 40px;
+
+    input{
+      padding-left: 20px;
+      width: 260px;
+      height: 50px;
+      font-size: 1.1em;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      box-shadow: none;
+      border: 1px solid rgb(235, 235, 235);
+      font-family: OpenSansRegular, sans-serif !important;
+      font-weight: 700;
+
+    }
+    input[type=submit] {
+      margin-top: 10px;
+      width: 280px;
+      background-color: @green;
+      color: #fff;
+      opacity: 1;
+      transition: opacity .3s ease;
+    }
+    input[type=submit]:hover {
+      opacity: 0.8;
+      // transition: opacity .3s ease;
+    }
+    input:focus {
+      outline: none;
+    }
+  }
+}
+
+#admin_page {
+  width: 440px;
+  margin: 0 auto;
+  padding-left: 20px;
+  margin-top: 30px;
+  font-family: OpenSansRegular, sans-serif !important;
+
+  button#add_survey_link, button#add_more  {
+    width: 140px;
+    height: 40px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    border: none;
+    background: @green;
+    color: #fff;
+    font-family: OpenSansRegular, sans-serif !important;
+    font-weight: 700;
+
+  }
+  button#add_more {
+    background-color: @red;
+    width: 40px;
+  }
 }
 
 .survey {

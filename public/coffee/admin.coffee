@@ -16,7 +16,7 @@ $ ->
   $("#add_survey_link").click (e) ->
     e.preventDefault()
     $("#add_survey").toggle()
-
+    $("#add_more").toggle()
 
   ## type changed
   $("#surveys").on "change", ".type", ->

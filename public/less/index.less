@@ -2,22 +2,52 @@
 @import "fonts.less";
 
 .error {
-  color: red;
+  width: 360px;
+  color: #333;
   display: none;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: rgb(243, 215, 215);
 }
 
 .success {
-  color: green;
-  display: none
+  color: #333;
+  width: 360px;
+  display: none;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: rgb(215, 243, 224);
+}
+
+.survey_hovered {
+  background-color: #fff;
+
+  .delete_survey {
+    display: inline;
+  }
+}
+
+.delete_survey {
+  position: absolute;
+  right: 5px;
+  display: none;
+  padding: 7px 21px;
+  border: none;
+  background-color: rgb(189, 96, 96);
+  color: #fff;
+  font-size: 11px;
+  border-radius: 3px;
+  text-transform: uppercase;
 }
 
 body {
   background: #f9f9f9;
   font-family: OpenSansRegular, sans-serif;
+  margin-bottom: 100px;
 }
 
 a {
-  color: rgb(87, 134, 111);;
+  color: rgb(87, 134, 111);
   text-decoration: none;
   opacity: 1;
 }
@@ -37,9 +67,9 @@ header {
     font-family: BlackRoseRegular;
     color: #666;
     font-size: 75px;
-    position: relative;
-    top: -41px;
-    left: 10px;
+    position: absolute;
+    top: 0px;
+    left: 100px;
   }
   img {
     width: 91px;
@@ -53,15 +83,18 @@ header {
 }
 
 .survey_list {
-  margin-left: 10px;
+  margin-left: 7px;
   border-bottom: 1px solid rgb(238, 236, 236);
   padding: 20px 0;
+  padding-left: 3px;
   font-size: 1.3em;  
   line-height: 2.1rem;
-
-  .name {
+  position: relative;
+  span {
+    display: inline-block;
+  }
+  span:first-letter {
     text-transform: capitalize;
-    margin-left: 3px;
   }
   .number {
     color: #666;
@@ -73,20 +106,98 @@ header {
 
   h3.name {
     display: inline-block;
-    border-bottom: 1px solid rgb(238, 236, 236);
-    text-transform: capitalize;
+    border-bottom: 2px solid #cecfd1;
     font-size: 1.3em;
     line-height: 2.1rem;
     margin: 20px 0;
-    padding-bottom: 3px;
+    padding-bottom: 6px;
     color: #57866f;
+  }
+  h3.name:first-letter {
+    text-transform: capitalize;
+  }
+
+  .survey {
+    width: 340px;
+    border: 1px solid #DDD;
+    padding: 20px;
+    background-color: #fdfdfd;
+    margin-bottom: 10px;
+    line-height: 1.5em;
+    position: relative;
+    
+    &:before, &:after {
+      position: absolute;
+      width: 40%;
+      height: 10px;
+      content: ' ';
+      left: 12px;
+      bottom: 12px;
+      background: transparent;
+      -webkit-transform: skew(-5deg) rotate(-5deg);
+      -moz-transform: skew(-5deg) rotate(-5deg);
+      -ms-transform: skew(-5deg) rotate(-5deg);
+      -o-transform: skew(-5deg) rotate(-5deg);
+      transform: skew(-5deg) rotate(-5deg);
+      -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      z-index: -1;
+    }
+    &:after {
+      left: auto;
+      right: 12px;
+      -webkit-transform: skew(5deg) rotate(5deg);
+      -moz-transform: skew(5deg) rotate(5deg);
+      -ms-transform: skew(5deg) rotate(5deg);
+      -o-transform: skew(5deg) rotate(5deg);
+      transform: skew(5deg) rotate(5deg);
+    }
+    .question {
+      font-weight: 500;
+      font-size: 14px;
+      font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #cecfd1;
+      color: #555;
+    }
+    .question:first-letter {
+      text-transform: capitalize;
+    }
+    .option {
+      background-color: rgb(243, 243, 243);
+      padding: 8px;
+      padding-left: 8px;
+      margin-bottom: 12px;
+      border-radius: 40px;
+
+      label {
+        display: inline-block;
+      }
+      label:first-letter {
+        text-transform: capitalize;
+      }
+    }
+    .option label span{
+      padding-left: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #555;
+    }
+
   }
 }
 
-
-
-.delete_survey {
-  text-decoration: none;
-  margin-left: 5px;
-  color: red;
+#view_result, #submit {
+  margin-top: 20px;
+  color: #fff;
+  padding: 10px 57px;
+  background: rgb(72, 163, 98);
+  border: none;
+  font-size: 1.1em;
+  opacity: 0.8;
+}
+#view_result {
+  margin-right: 20px;
 }

@@ -5,38 +5,30 @@ head
   script(src="/js/admin.js")
 
 body
+  include includes/header
+
   if typeof user !== "undefined" && user
     include includes/add_survey_template
 
     #admin_page
-      a(href="/survey/edit/all") surveys
-      br
-      a#add_survey_link(href="#") create Survey
-      br
-      br
+      button#add_survey_link Create Survey
+      button#add_more.hide +
 
       #add_survey.hide
         #add_survey_errors.error
         form#add_survey_form
-          button#add_more("#") ADD Survey
-          br
-          br
-          label(for="name") Title
-          input(type="text", name="name")
-          br
-          br
+          input(type="text", name="name", placeholder="Name")
 
           #surveys
 
           input(type="reset", value="clear")  
           input(type="submit", value="submit")
   else
-    form#login_form
-      #login_errors.hide
-      label(for="user") username: 
-      input(type="text", name="user")
-      br
-      label(for="password") password: 
-      input(type="password", name="password")
-      br
-      input(type="submit", value="LOGIN")
+    #login
+      form#login_form
+        #login_errors.hide
+        input(type="text", name="user", placeholder="Username")
+        br
+        input(type="password", name="password", placeholder="Password")
+        br
+        input(type="submit", value="LOGIN")
