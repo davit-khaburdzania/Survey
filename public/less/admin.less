@@ -2,13 +2,22 @@
 @import "fonts.less";
 
 @red: rgb(224, 114, 114);
-@green: #6bb480;
+@green: rgb(114, 184, 106);
+@green_shadow: #53994b;
+@background: #f9f9f9;
+@input: rgb(172, 172, 172);
+
+.on_active {
+  box-shadow: 0 3px 0 0 @green_shadow;
+  position: relative;
+  top: 2px;
+}
+
 .hide {
   display: none
 }
 
 .error {
-
   width: 360px;
   color: #333;
   display: none;
@@ -27,11 +36,18 @@
 }
 
 body {
-  background: #f9f9f9;
+  background: @background;
   font-family: OpenSansRegular, sans-serif !important;
   margin-bottom: 100px;
 }
 
+button {
+  cursor: pointer;
+}
+
+input {
+  color: @input;
+}
 header {
   width: 440px;
   margin: 0 auto;
@@ -77,16 +93,20 @@ header {
       margin-top: 10px;
       width: 280px;
       background-color: @green;
+      border: none;
       color: #fff;
       opacity: 1;
-      transition: opacity .3s ease;
-    }
-    input[type=submit]:hover {
-      opacity: 0.8;
-      // transition: opacity .3s ease;
+      box-shadow: 0 5px 0 0 @green_shadow;
+
+      &:active {
+        .on_active
+      }
     }
     input:focus {
       outline: none;
+    }
+    .error {
+      width: 262px;
     }
   }
 }
@@ -99,26 +119,129 @@ header {
   font-family: OpenSansRegular, sans-serif !important;
 
   button#add_survey_link, button#add_more  {
-    width: 140px;
+    width: 150px;
     height: 40px;
     font-size: 14px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     border: none;
-    background: @green;
+    background: #77cc6d;
     color: #fff;
     font-family: OpenSansRegular, sans-serif !important;
     font-weight: 700;
-
+    border-radius: 4px;
+    margin-right: 6px;
+    box-shadow: 0 5px 0 0 #53994b;
   }
   button#add_more {
     background-color: @red;
-    width: 40px;
+    width: 45px;
+    box-shadow: 0 5px 0 0 rgb(163, 99, 99);
+  }
+  #add_more:active, #add_survey_link:active {
+    .on_active
+  }
+
+  .error, .success {
+    width: 292px;
+  }
+  input[type=text] {
+    padding-left: 10px;
+    width: 300px;
+    height: 40px;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(235, 235, 235);
+    font-family: OpenSansRegular, sans-serif !important;
+    font-weight: 700;
+  }
+
+  select {
+    width: 310px;
+    height: 30px;
+    padding-left: 10px;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    -webkit-box-shadow: 0 3px 0 rgb(231, 231, 231),0 -1px #ffffff inset;
+    -moz-box-shadow: 0 3px 0 rgb(231, 231, 231),0 -1px #ffffff inset;
+    box-shadow: 0 3px 0 rgb(231, 231, 231),0 -1px #ffffff inset;
+    background: #fff;
+    color: @red;
+    border:none;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+    font-size: 1.1em;
+    font-family: OpenSansRegular, sans-serif !important;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  label {position:relative}
+  label:after {
+      content:'<>';
+      font:13px "Consolas", monospace;
+      color:#aaa;
+      -webkit-transform:rotate(90deg);
+      -moz-transform:rotate(90deg);
+      -ms-transform:rotate(90deg);
+      transform:rotate(90deg);
+      right:8px; top:2px;
+      padding:0 0 2px;
+      border-bottom:1px solid #ddd;
+      position:absolute;
+      pointer-events:none;
+  }
+  label:before {
+      content:'';
+      right:6px; top:0px;
+      width:20px; height:20px;
+      position:absolute;
+      pointer-events:none;
+      display:block;
+  }
+  button.add_list_radio {
+    margin-bottom: 10px;
+    width: 32px;
+    height: 30px;
+    border-radius: 68px;
+    border: none;
+    outline: none;
+    background-color: @green;
+    font-size: 1.1em;
+    font-family: OpenSansRegular, sans-serif !important;
+    font-weight: 700;
+    color: #fff;
+    margin-left: 2px;
+    box-shadow: 0 3px 0 0 @green_shadow;
+  }
+  button.add_list_radio:active {
+    box-shadow: 0 2px 0 0 @green_shadow;
+    position: relative;
+    top: 1px;
+  }
+  .reset, .submit {
+    margin-right: 15px;
+    border-radius: 4px;
+    width: 150px;
+    height: 35px;
+    color: #fff;
+    background: #77cc6d;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0 5px 0 0 @green_shadow;
+  }
+  .reset:active, .submit:active {
+    .on_active
   }
 }
 
 .survey {
-  border-bottom: 1px solid #CCC;
-  padding-bottom: 10px;
-  padding-top: 10px;
-
+  width: 312px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
 }

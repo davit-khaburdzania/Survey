@@ -1,6 +1,18 @@
 @import "reset.less";
 @import "fonts.less";
 
+@red: rgb(224, 114, 114);
+@green: rgb(114, 184, 106);
+@green_shadow: #53994b;
+@background: #f9f9f9;
+@input: rgb(172, 172, 172);
+
+.on_active {
+  box-shadow: 0 3px 0 0 @green_shadow;
+  position: relative;
+  top: 2px;
+}
+
 .error {
   width: 360px;
   color: #333;
@@ -44,6 +56,10 @@ body {
   background: #f9f9f9;
   font-family: OpenSansRegular, sans-serif;
   margin-bottom: 100px;
+}
+
+button {
+  cursor: pointer;
 }
 
 a {
@@ -193,11 +209,19 @@ header {
   margin-top: 20px;
   color: #fff;
   padding: 10px 57px;
-  background: rgb(72, 163, 98);
+  background: @green;
+  box-shadow: 0 5px 0 0 @green_shadow;
   border: none;
   font-size: 1.1em;
-  opacity: 0.8;
+  border-radius: 4px;
+  cursor: pointer;
+  
+  &:active {
+    .on_active
+  }
 }
+
+
 #view_result {
   margin-right: 20px;
 }

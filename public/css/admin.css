@@ -5,16 +5,30 @@ ol,ul{list-style:none;}
 blockquote,q{quotes:none;}
 blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
 table{border-collapse:collapse;border-spacing:0;}
-@font-face{font-family:'BlackRoseRegular';src:url('../fonts/BLACKR-webfont.eot');src:url('../fonts/BLACKR-webfont.eot?#iefix') format('embedded-opentype'),url('../fonts/BLACKR-webfont.woff') format('woff'),url('../fonts/BLACKR-webfont.ttf') format('truetype'),url('../fonts/BLACKR-webfont.svg#BlackRoseRegular') format('svg');font-weight:normal;font-style:normal;}@font-face{font-family:'OpenSansRegular';src:url('../fonts/OpenSans-Regular-webfont.eot');src:url('../fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),url('../fonts/OpenSans-Regular-webfont.woff') format('woff'),url('../fonts/OpenSans-Regular-webfont.ttf') format('truetype'),url('../fonts/OpenSans-Regular-webfont.svg#OpenSansRegular') format('svg');font-weight:normal;font-style:normal;}@font-face{font-family:'OpenSansItalic';src:url('../fonts/OpenSans-Italic-webfont.eot');src:url('../fonts/OpenSans-Italic-webfont.eot?#iefix') format('embedded-opentype'),url('../fonts/OpenSans-Italic-webfont.woff') format('woff'),url('../fonts/OpenSans-Italic-webfont.ttf') format('truetype'),url('../fonts/OpenSans-Italic-webfont.svg#OpenSansItalic') format('svg');font-weight:normal;font-style:normal;}.hide{display:none;}
+@font-face{font-family:'BlackRoseRegular';src:url('../fonts/BLACKR-webfont.eot');src:url('../fonts/BLACKR-webfont.eot?#iefix') format('embedded-opentype'),url('../fonts/BLACKR-webfont.woff') format('woff'),url('../fonts/BLACKR-webfont.ttf') format('truetype'),url('../fonts/BLACKR-webfont.svg#BlackRoseRegular') format('svg');font-weight:normal;font-style:normal;}@font-face{font-family:'OpenSansRegular';src:url('../fonts/OpenSans-Regular-webfont.eot');src:url('../fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),url('../fonts/OpenSans-Regular-webfont.woff') format('woff'),url('../fonts/OpenSans-Regular-webfont.ttf') format('truetype'),url('../fonts/OpenSans-Regular-webfont.svg#OpenSansRegular') format('svg');font-weight:normal;font-style:normal;}@font-face{font-family:'OpenSansItalic';src:url('../fonts/OpenSans-Italic-webfont.eot');src:url('../fonts/OpenSans-Italic-webfont.eot?#iefix') format('embedded-opentype'),url('../fonts/OpenSans-Italic-webfont.woff') format('woff'),url('../fonts/OpenSans-Italic-webfont.ttf') format('truetype'),url('../fonts/OpenSans-Italic-webfont.svg#OpenSansItalic') format('svg');font-weight:normal;font-style:normal;}.on_active{box-shadow:0 3px 0 0 #53994b;position:relative;top:2px;}
+.hide{display:none;}
 .error{width:360px;color:#333;display:none;margin-bottom:15px;padding:10px;background:#f3d7d7;}
 .success{color:#333;width:360px;display:none;margin-bottom:15px;padding:10px;background:#d7f3e0;}
 body{background:#f9f9f9;font-family:OpenSansRegular,sans-serif !important;margin-bottom:100px;}
+button{cursor:pointer;}
+input{color:#acacac;}
 header{width:440px;margin:0 auto;position:relative;}header h1{display:inline;font-family:BlackRoseRegular;color:#666;font-size:75px;position:absolute;top:0px;left:100px;}
 header img{width:91px;height:90px;}
 #login{width:440px;margin:0 auto;}#login #login_form{margin-left:10px;margin-top:40px;}#login #login_form input{padding-left:20px;width:260px;height:50px;font-size:1.1em;margin-bottom:10px;border-radius:5px;box-shadow:none;border:1px solid #ebebeb;font-family:OpenSansRegular,sans-serif !important;font-weight:700;}
-#login #login_form input[type=submit]{margin-top:10px;width:280px;background-color:#6bb480;color:#fff;opacity:1;transition:opacity .3s ease;}
-#login #login_form input[type=submit]:hover{opacity:0.8;}
+#login #login_form input[type=submit]{margin-top:10px;width:280px;background-color:#72b86a;border:none;color:#fff;opacity:1;box-shadow:0 5px 0 0 #53994b;}#login #login_form input[type=submit]:active{box-shadow:0 3px 0 0 #53994b;position:relative;top:2px;}
 #login #login_form input:focus{outline:none;}
-#admin_page{width:440px;margin:0 auto;padding-left:20px;margin-top:30px;font-family:OpenSansRegular,sans-serif !important;}#admin_page button#add_survey_link,#admin_page button#add_more{width:140px;height:40px;font-size:14px;margin-bottom:10px;border:none;background:#6bb480;color:#fff;font-family:OpenSansRegular,sans-serif !important;font-weight:700;}
-#admin_page button#add_more{background-color:#e07272;width:40px;}
-.survey{border-bottom:1px solid #CCC;padding-bottom:10px;padding-top:10px;}
+#login #login_form .error{width:262px;}
+#admin_page{width:440px;margin:0 auto;padding-left:20px;margin-top:30px;font-family:OpenSansRegular,sans-serif !important;}#admin_page button#add_survey_link,#admin_page button#add_more{width:150px;height:40px;font-size:14px;margin-bottom:20px;border:none;background:#77cc6d;color:#fff;font-family:OpenSansRegular,sans-serif !important;font-weight:700;border-radius:4px;margin-right:6px;box-shadow:0 5px 0 0 #53994b;}
+#admin_page button#add_more{background-color:#e07272;width:45px;box-shadow:0 5px 0 0 #a36363;}
+#admin_page #add_more:active,#admin_page #add_survey_link:active{box-shadow:0 3px 0 0 #53994b;position:relative;top:2px;}
+#admin_page .error,#admin_page .success{width:292px;}
+#admin_page input[type=text]{padding-left:10px;width:300px;height:40px;font-size:1.1em;margin-bottom:10px;border-radius:5px;border:1px solid #ebebeb;font-family:OpenSansRegular,sans-serif !important;font-weight:700;}
+#admin_page select{width:310px;height:30px;padding-left:10px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:0 3px 0 #e7e7e7,0 -1px #ffffff inset;-moz-box-shadow:0 3px 0 #e7e7e7,0 -1px #ffffff inset;box-shadow:0 3px 0 #e7e7e7,0 -1px #ffffff inset;background:#fff;color:#e07272;border:none;outline:none;display:inline-block;-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;font-size:1.1em;font-family:OpenSansRegular,sans-serif !important;font-weight:700;margin-bottom:20px;}
+#admin_page label{position:relative;}
+#admin_page label:after{content:'<>';font:13px "Consolas",monospace;color:#aaa;-webkit-transform:rotate(90deg);-moz-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg);right:8px;top:2px;padding:0 0 2px;border-bottom:1px solid #ddd;position:absolute;pointer-events:none;}
+#admin_page label:before{content:'';right:6px;top:0px;width:20px;height:20px;position:absolute;pointer-events:none;display:block;}
+#admin_page button.add_list_radio{margin-bottom:10px;width:32px;height:30px;border-radius:68px;border:none;outline:none;background-color:#72b86a;font-size:1.1em;font-family:OpenSansRegular,sans-serif !important;font-weight:700;color:#fff;margin-left:2px;box-shadow:0 3px 0 0 #53994b;}
+#admin_page button.add_list_radio:active{box-shadow:0 2px 0 0 #53994b;position:relative;top:1px;}
+#admin_page .reset,#admin_page .submit{margin-right:15px;border-radius:4px;width:150px;height:35px;color:#fff;background:#77cc6d;border:none;font-size:1em;cursor:pointer;box-shadow:0 5px 0 0 #53994b;}
+#admin_page .reset:active,#admin_page .submit:active{box-shadow:0 3px 0 0 #53994b;position:relative;top:2px;}
+.survey{width:312px;border-bottom:1px solid #ddd;margin-bottom:20px;}

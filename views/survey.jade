@@ -13,11 +13,12 @@ body
       each s,i in survey.surveys
         .survey
           h3.question #{s.question}
-          if s.type === "list_radio" || s.type === "yes_or_no"
-            each opt, j in s.options
-              .option
-                input(type="radio", name="answer_#{i}", value=j)
-                label(for="answer_#{i}")
-                  span #{opt}
+          .questions
+            if s.type === "list_radio" || s.type === "yes_or_no"
+              each opt, j in s.options
+                .option
+                  input(type="radio", name="answer_#{i}", value=j)
+                  label(for="answer_#{i}")
+                    span #{opt}
       button#view_result Results
       input#submit(type="submit", value="Submit")

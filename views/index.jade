@@ -13,6 +13,6 @@ body
         span.number #{i+1}. 
         a.name(href="/survey/#{s._id}") 
           span #{s.name}
-        //- if( typeof user !== "undefined" && user)
-        button.delete_survey(id="#{s._id}") delete
+        if( typeof user !== "undefined" && user)
+          button.delete_survey(id="#{s._id}") delete
     

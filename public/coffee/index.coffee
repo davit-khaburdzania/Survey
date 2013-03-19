@@ -27,8 +27,11 @@ $ ->
     e.preventDefault()
     $(this).find("input:radio").prop("checked", true)
 
-  $("#view_result").click (e) ->
-    e.preventDefault()
-
   $(".survey_list").hover (e) ->
     $(this).toggleClass("survey_hovered")
+
+  $("#view_result").click (e) ->
+    e.preventDefault()
+    # $(".questions").hide()
+    
+
