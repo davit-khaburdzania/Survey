@@ -20,7 +20,9 @@ body
           input(type="text", name="name", placeholder="Name")
 
           #surveys
-
+          #vote_multiple
+            input(type="checkbox", name="vote_multiple")
+            label(for="vote_multiple") user can vote multiple times
           input.reset(type="reset", value="clear")  
           input.submit(type="submit", value="submit")
   else

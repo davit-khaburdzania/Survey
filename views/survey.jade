@@ -1,24 +1,63 @@
 !!!
 head
+  link(rel="stylesheet", type="text/css", href="/css/simple-slider.css")
   link(rel="stylesheet", type="text/css", href="/css/index.css")
   script(src="/js/jquery-1.9.1.min.js")
+  script(src="/js/simple-slider.min.js")
+  script(src="/js/handlebars.js")
   script(src="/js/index.js")
+    
 body
   include includes/header
 
-  #in_survey    
+  #in_survey(data-exists="#{exists}")
     h3.name #{survey.name}
     #survey_errors
     form#survey_form(method="POST", action="/survey/#{survey._id}")
       each s,i in survey.surveys
-        .survey
+        .survey(data-type=s.type)
           h3.question #{s.question}
           .questions
+
             if s.type === "list_radio" || s.type === "yes_or_no"
               each opt, j in s.options
                 .option
                   input(type="radio", name="answer_#{i}", value=j)
                   label(for="answer_#{i}")
                     span #{opt}
+            if s.type === "list_dropdown"
+              label.select-box
+                select
+                  each opt, j in s.options
+                    option(value=j, name="answer_#{j}") #{opt}
+
+            if s.type === "5_point"
+              .point-5
+                each opt, j in s.options
+                  input.hide(type="radio", name="answer_#{i}", value=j)
+                  span.point-out
+                    span.point-in(data-value="#{j}") #{opt}
+
+            if s.type === "5_star"
+              .star-5
+                each opt, j in s.options
+                  input.hide(type="radio", name="answer_#{i}", value=j)
+                  span.point-out
+                    span.point-in(data-value="#{j}")
+
+            if s.type === "percent"
+              .percent
+                input.percent_input(type="text", data-slider-range="0,100", data-slider-step="1")
+                span.percent_value 0
+
+            if s.type === "text_short"
+              .text_short
+                input(type="text", placeholder="Answer", maxlength="50")
+
+            if s.type === "text_long"
+              .text_long
+                textarea(placeholder="Answer", maxlength="800")
+
       button#view_result Results
       input#submit(type="submit", value="Submit")
+

@@ -1,5 +1,5 @@
-mongo = require "mongojs"
-db    = mongo "survey-app", ["surveys", "users"]
+mongojs = require "mongojs"
+db      = mongojs("mongodb://dkhaburdzania:jina2009@ds051447.mongolab.com:51447/survey", ["surveys", "users"])
 
 class Survey
   @all: (cb) ->
@@ -36,6 +36,10 @@ class Survey
   @delete: (id, cb) ->
     db.surveys.remove {_id: id}, (err) ->
       cb(err?)
+
+  @results: (id, cb) ->
+    db.surveys.find {_id: id}, {answers: 1, surveys: 1, _id: -1}, (err, result) ->
+      cb(err, result)
 
   @user: (username, cb) ->
     db.users.find user: username, (err, user) ->

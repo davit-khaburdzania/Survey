@@ -59,6 +59,8 @@ app.get  "/logout",        routes.logout
 app.post "/create/survey", routes.create_survey
 app.post "/delete/survey", routes.delete_survey
 
+app.get "/survey/:id/results", routes.survey_results
+
 
 app.listen "3000", ->
   console.log("server listening at port 3000...")

@@ -1,35 +1,5 @@
-@import "reset.less";
-@import "fonts.less";
+@import "common.less";
 
-@red: rgb(224, 114, 114);
-@green: rgb(114, 184, 106);
-@green_shadow: #53994b;
-@background: #f9f9f9;
-@input: rgb(172, 172, 172);
-
-.on_active {
-  box-shadow: 0 3px 0 0 @green_shadow;
-  position: relative;
-  top: 2px;
-}
-
-.error {
-  width: 360px;
-  color: #333;
-  display: none;
-  margin-bottom: 15px;
-  padding: 10px;
-  background: rgb(243, 215, 215);
-}
-
-.success {
-  color: #333;
-  width: 360px;
-  display: none;
-  margin-bottom: 15px;
-  padding: 10px;
-  background: rgb(215, 243, 224);
-}
 
 .survey_hovered {
   background-color: #fff;
@@ -38,6 +8,7 @@
     display: inline;
   }
 }
+
 
 .delete_survey {
   position: absolute;
@@ -52,46 +23,8 @@
   text-transform: uppercase;
 }
 
-body {
-  background: #f9f9f9;
-  font-family: OpenSansRegular, sans-serif;
-  margin-bottom: 100px;
-}
 
-button {
-  cursor: pointer;
-}
 
-a {
-  color: rgb(87, 134, 111);
-  text-decoration: none;
-  opacity: 1;
-}
-
-a:hover {
-  opacity: .7;
-  transition: opacity .3s ease;
-}
-
-header {
-  width: 440px;
-  margin: 0 auto;
-  position: relative;
-
-  h1 {
-    display: inline;
-    font-family: BlackRoseRegular;
-    color: #666;
-    font-size: 75px;
-    position: absolute;
-    top: 0px;
-    left: 100px;
-  }
-  img {
-    width: 91px;
-    height: 90px;
-  }
-}
 
 #surveys, #in_survey {
   width: 440px;
@@ -187,9 +120,11 @@ header {
       padding-left: 8px;
       margin-bottom: 12px;
       border-radius: 40px;
+      cursor: pointer;
 
       label {
         display: inline-block;
+        cursor: pointer;
       }
       label:first-letter {
         text-transform: capitalize;
@@ -202,13 +137,126 @@ header {
       color: #555;
     }
 
+    .result {
+      .result-box {
+        background-color: rgb(243, 243, 243);
+        border-radius: 40px;
+        width: 340px;
+        height: 10px;
+        margin-bottom: 12px;
+
+        .inside-result {
+          border-radius: 40px;
+          background: rgb(194, 230, 147);
+          width: 0px;
+          height: 10px;
+        }
+      }
+
+      .result-question {
+        font-size: 0.9em;
+        color: rgb(105, 105, 105);
+        padding-bottom: 6px;
+
+        .q {
+          width: 265px;
+          display: inline-block;
+        }
+
+        .count {
+          margin-left: 10px;
+          display: inline-block;
+          width: 65px;
+          opacity: 0.7;
+        }
+      }
+    }
+
+    .questions {
+        user-select: none;
+        -webkit-user-select: none;
+
+      .point-5 span.point-out, .star-5 span.point-out {
+        display: inline-block;
+        margin-left: 10px;
+        width: 56px;
+        height: 56px;
+        background: #fdfdfd;
+        position: relative;
+        border-radius: 50%;
+        border: 1px solid #ebebeb;
+      }
+      .point-5 span.point-in, .star-5 span.point-in{
+        color: #898989;
+        line-height: 40px;
+        text-align: center;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: #ebebeb;
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        border-radius: 50%;
+        border: 1px solid rgb(221, 221, 221);
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .star-5 span.point-in {
+        position: relative;
+
+        &:after {
+          content: "\2605";
+          color: rgb(175, 172, 172);
+          position: absolute;
+          font-size: 23px;
+          left: 9px;
+          font-weight: bold;
+        }
+      }
+
+
+      .percent {
+        position: relative;
+        width: 95%;
+
+        .percent_value {
+          position: absolute;
+          top: -3px;
+          right: -26px;
+        }
+      }
+
+      .text_short {
+
+        input {
+          width: 330px;
+          height: 35px;
+          padding-left: 10px;
+        }
+      }
+
+      .text_long {
+        textarea {
+          width: 331px;
+          height: 180px;
+        }
+      }
+
+
+    }
+
   }
 }
 
 #view_result, #submit {
   margin-top: 20px;
   color: #fff;
-  padding: 10px 57px;
+  width: 180px;
+  height: 40px;
   background: @green;
   box-shadow: 0 5px 0 0 @green_shadow;
   border: none;

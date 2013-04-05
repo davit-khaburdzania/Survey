@@ -1,15 +1,35 @@
 #survey_template.hide
   input(type="text", name="question", placeholder="Question")
   br
-  label
+  label.select-box
     select.type
       option(value="yes_or_no") Yes or No
       option(value="list_radio") List with Radio Buttons
+      option(value="list_dropdown") List Dropdown
+      option(value="5_point") 5 Point 
+      option(value="5_star") 5 Star 
+      option(value="percent") Percent
+      option(value="text_short") Text Short
+      option(value="text_long") Text Long
   input.previous_type(type="hidden")
   br
   .list_radio.hide
     button.add_list_radio + 
     .list_radio_options
 
+  .list_dropdown.hide
+    button.add_list_dropdown + 
+    .list_dropdown_options
+
   .yes_or_no.hide
+
+  .5_point.hide
+
+  .5_star.hide
+
+  .percent.hide
+
+  .text_short.hide
+  
+  .text_long.hide  
   br  

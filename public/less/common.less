@@ -1,0 +1,149 @@
+@import "reset.less";
+@import "fonts.less";
+
+@red: rgb(224, 114, 114);
+@green: rgb(114, 184, 106);
+@green_shadow: #53994b;
+@background: #f9f9f9;
+@input: rgb(172, 172, 172);
+
+.error {
+  width: 360px;
+  color: #333;
+  display: none;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: rgb(243, 215, 215);
+}
+
+.success {
+  color: #333;
+  width: 360px;
+  display: none;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: rgb(215, 243, 224);
+}
+
+.hide {
+  display: none
+}
+
+.on_active {
+  box-shadow: 0 3px 0 0 @green_shadow;
+  position: relative;
+  top: 2px;
+}
+
+.point-active {
+  background-color: rgb(204, 90, 90) !important;
+  color: #fff !important;
+}
+
+.star-active {
+  &:after {
+    color: rgb(204, 90, 90) !important;
+  }
+
+}
+
+body {
+  background: #f9f9f9;
+  font-family: OpenSansRegular, sans-serif;
+  margin-bottom: 100px;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: rgb(87, 134, 111);
+  text-decoration: none;
+  opacity: 1;
+}
+
+a:hover {
+  opacity: .7;
+  transition: opacity .3s ease;
+}
+
+.select-box {
+  width: 340px;
+  height: 40px;
+  position:relative;
+}
+
+.select-box:after {
+    content:'<>';
+    font:11px "Consolas", monospace;
+    color:#aaa;
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform:rotate(90deg);
+    right:8px; top:2px;
+    padding:0 0 2px;
+    border-bottom:1px solid #ddd;
+    position:absolute;
+    pointer-events:none;
+}
+
+.select-box:before {
+    content:'';
+    right:6px; 
+    top:2px;
+    width:40px; 
+    height:25px;
+    background: #f3f3f3;
+    position:absolute;
+    pointer-events:none;
+    display:block;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    select {padding-right:18px}
+}
+
+select {
+  width: inherit;
+  height: inherit;
+  padding: 3px;
+  padding-left: 15px;
+  margin: 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 40px;
+  background: #f3f3f3;
+  color: @red;
+  border: none;
+  outline: none;
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-family: OpenSansRegular,sans-serif !important;
+  font-weight: 700;
+}
+
+header {
+  width: 440px;
+  margin: 0 auto;
+  position: relative;
+
+  h1 {
+    display: inline;
+    font-family: BlackRoseRegular;
+    color: #666;
+    font-size: 75px;
+    position: absolute;
+    top: 0px;
+    left: 100px;
+  }
+  img {
+    width: 91px;
+    height: 90px;
+  }
+}
